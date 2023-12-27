@@ -138,7 +138,8 @@
                     sizeDropdown.appendChild(option);
                 });
 
-                // Function to update the quantity based on the selected size
+         
+// Function to update the quantity based on the selected size
 function updateQuantity() {
     const sizeDropdown = document.getElementById('size');
     const productQuantityElement = document.getElementById('productQuantity');
@@ -147,7 +148,7 @@ function updateQuantity() {
     const selectedSize = sizeDropdown.value;
 
     // Check if the selected size is valid
-    if (productData[productId].quantity[selectedSize] !== undefined) {
+    if (productId && productData[productId] && productData[productId].quantity[selectedSize] !== undefined) {
         // Update the quantity element
         productQuantityElement.textContent = `Quantity: ${productData[productId].quantity[selectedSize]}`;
     }
