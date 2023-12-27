@@ -78,7 +78,7 @@
                     <!-- Size options will be dynamically added here -->
                 </select>
             </div>
-            <p id="productQuantity">Quantity: 5</p>
+            <p id="productQuantity">Quantity: <span id="quantityValue">1</span></p>
         </div>
         <div class="scroll-container">
             <div class="product-images" id="productImages">
@@ -138,11 +138,10 @@
                     sizeDropdown.appendChild(option);
                 });
 
-         
-// Function to update the quantity based on the selected size
+    // Function to update the quantity based on the selected size
 function updateQuantity() {
     const sizeDropdown = document.getElementById('size');
-    const productQuantityElement = document.getElementById('productQuantity');
+    const quantityValueElement = document.getElementById('quantityValue');
     
     // Get the selected size
     const selectedSize = sizeDropdown.value;
@@ -150,11 +149,11 @@ function updateQuantity() {
     // Check if the selected size is valid
     if (productId && productData[productId] && productData[productId].quantity[selectedSize] !== undefined) {
         // Update the quantity element
-        productQuantityElement.textContent = `Quantity: ${productData[productId].quantity[selectedSize]}`;
+        const selectedProduct = productData[productId];
+        quantityValueElement.textContent = selectedProduct.quantity[selectedSize];
     }
 }
 
-                
                 // Dynamically add product images to the container
                 product.images.forEach(image => {
                     const imgElement = document.createElement('img');
